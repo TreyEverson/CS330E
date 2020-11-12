@@ -1,0 +1,86 @@
+--- NOTES FOR MT #1 ---
+- map(f, z) (MapT.py) 
+	- maps function f to every z
+	- exhaustable
+- lambda - temporary function
+- y = filter(lambda v : v % 2, x)
+	- applies every element to function like map() but outputs it to true or false
+	- 0 = false
+	- lazy, exhaustable
+- reduce
+- sum
+- sets
+	- |= is unuion
+- reversed()
+	- generator that reverses a list
+- any() or not any()
+	- if any confition is true, returns true
+- yield (Yield.py)
+	- lazy form of return
+	- a function with yield is a generator
+	- exhaustable
+	- when you call function it will point to memory
+	- when you call next of the function, it will return the output of function
+	- use with generators
+---
+def f():
+	print ("abc")
+	yield 5
+	print("def")
+
+v = f()
+v ---> gives you a memory pointer
+w = next(v) ---> prints "abc"
+w = next(v) ---> prints "def"
+---
+
+- return
+	- eager form of yield
+- zip(x, y) - takes two lists and combines x[0] and y[0] into one list and x[1] and y[1] into another list...
+- [] - list comprehension, eager, not lazy, done right away, not exhaustable
+	- RMSE.py like 43
+- () - not list comprehension, lazy, exhaustable, can be generator
+	- RMSE.py line 48
+	- Comprehensions.py line 47
+- iterable
+	- non-exhaustable
+	- eager
+	- lists are
+	- assert hasattr(x, "__iter__")
+- iterator
+	- exhaustable
+	- lazy
+	- is also iterable
+	- lists are not
+	- assert hasattr(x, "__next__")
+- function unpacking
+	- *variable_name
+	- * takes an interable and drops the parenthesis
+	- ** is for unpacking dictionaries?
+	* is stronger for placement than **
+	- position order
+		1. position [x = f(1)] and *unpacking iterable
+		2. variable by name
+		3. **unpack dict
+- function tuple unpacking
+______________	
+	def f (x, y, *z):
+		return [x, y, z]
+		
+	u = (2,)
+	assert f(*u, y = 3) == [2, 3, ()]
+_______________
+	- means packing
+	- don't have to specify the amount of arguements
+	- packing is putting back the parenthesis
+- function dictionary packing
+______________	
+	def f (x, y, **z):
+		return [x, y, z]
+	assert f(2, 3, a = 4, b = 5) == [2, 3, {'a' : 4, 'b' : 5}]
+_______________
+	- 
+
+- when you call a function with * or ** it is UNPACKING
+- when you create a function with * or ** it is PACKING
+
